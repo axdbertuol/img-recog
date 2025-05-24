@@ -1,0 +1,8 @@
+__pycache__
+*.pyc
+.venv
+*.log
+*.csv
+*.png
+*.jpg
+*.mat
