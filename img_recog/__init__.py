@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-from recognizer import carregar_dados, decode_label
+from img_recog.recognizer import carregar_dados, decode_label
 
 # Configuração da página
 st.set_page_config(page_title="Reconhecimento de Letras e Números", layout="wide")
@@ -433,38 +433,38 @@ elif st.session_state.etapa >= 4:
         ])
 
         with tab1:
-            with st.expander("📊 Como Funciona a Distância Euclidiana", expanded=True):
-                st.markdown("### Definição")
-                st.latex(r"d(x, y) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}")
-                st.markdown("### Etapas do Cálculo:")
-                st.markdown("1. Para cada pixel da imagem:")
-                st.markdown("   - Calcula a diferença entre os valores: `x[i] - y[i]`")
-                st.markdown("   - Eleva ao quadrado: `(x[i] - y[i])²`")
-                st.markdown("2. Soma todos os quadrados")
-                st.markdown("3. Tira a raiz quadrada da soma total")
+            st.markdown("📊 Como Funciona a Distância Euclidiana")
+            st.markdown("### Definição")
+            st.latex(r"d(x, y) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}")
+            st.markdown("### Etapas do Cálculo:")
+            st.markdown("1. Para cada pixel da imagem:")
+            st.markdown("   - Calcula a diferença entre os valores: `x[i] - y[i]`")
+            st.markdown("   - Eleva ao quadrado: `(x[i] - y[i])²`")
+            st.markdown("2. Soma todos os quadrados")
+            st.markdown("3. Tira a raiz quadrada da soma total")
 
-            with st.expander("📐 Distância de Manhattan"):
-                st.latex(r"d(x, y) = \sum_{i=1}^{n}|x_i - y_i|")
-                st.markdown("Boa para imagens com diferenças pequenas mas constantes.")
-                st.markdown("### Etapas do Cálculo:")
-                st.markdown("1. Para cada pixel da imagem:")
-                st.markdown("   - Calcula a diferença absoluta: `|x[i] - y[i]|`")
-                st.markdown("2. Soma todas as diferenças absolutas")
+            st.markdown("📐 Distância de Manhattan")
+            st.latex(r"d(x, y) = \sum_{i=1}^{n}|x_i - y_i|")
+            st.markdown("Boa para imagens com diferenças pequenas mas constantes.")
+            st.markdown("### Etapas do Cálculo:")
+            st.markdown("1. Para cada pixel da imagem:")
+            st.markdown("   - Calcula a diferença absoluta: `|x[i] - y[i]|`")
+            st.markdown("2. Soma todas as diferenças absolutas")
 
-                st.markdown("### Exemplo com 3 pixels:")
-                st.markdown("```\nImagem A: [0.10, 0.20, 0.30]\nImagem B: [0.05, 0.15, 0.25]\n```\nResultado: `0.15`")
+            st.markdown("### Exemplo com 3 pixels:")
+            st.markdown("```\nImagem A: [0.10, 0.20, 0.30]\nImagem B: [0.05, 0.15, 0.25]\n```\nResultado: `0.15`")
 
-            with st.expander("📐 Distância de Minkowski (p=3)"):
-                st.latex(r"d(x, y) = \left(\sum_{i=1}^{n}|x_i - y_i|^p\right)^{1/p}")
-                st.markdown("Generalização das duas anteriores. Pode ser ajustada conforme a necessidade.")
-                st.markdown("### Etapas do Cálculo:")
-                st.markdown("1. Para cada pixel da imagem:")
-                st.markdown("   - Calcula a diferença absoluta: `|x[i] - y[i]|`")
-                st.markdown("   - Eleva à potência `p`: `|x[i] - y[i]|^p`")
-                st.markdown("2. Soma todas essas potências")
-                st.markdown("3. Tira a raiz p-ésima da soma total")
-                st.markdown("### Exemplo com 3 pixels e p=3:")
-                st.markdown("```\nImagem A: [0.10, 0.20, 0.30]\nImagem B: [0.05, 0.15, 0.25]\n```\nResultado: `0.072`")
+            st.markdown("📐 Distância de Minkowski (p=3)")
+            st.latex(r"d(x, y) = \left(\sum_{i=1}^{n}|x_i - y_i|^p\right)^{1/p}")
+            st.markdown("Generalização das duas anteriores. Pode ser ajustada conforme a necessidade.")
+            st.markdown("### Etapas do Cálculo:")
+            st.markdown("1. Para cada pixel da imagem:")
+            st.markdown("   - Calcula a diferença absoluta: `|x[i] - y[i]|`")
+            st.markdown("   - Eleva à potência `p`: `|x[i] - y[i]|^p`")
+            st.markdown("2. Soma todas essas potências")
+            st.markdown("3. Tira a raiz p-ésima da soma total")
+            st.markdown("### Exemplo com 3 pixels e p=3:")
+            st.markdown("```\nImagem A: [0.10, 0.20, 0.30]\nImagem B: [0.05, 0.15, 0.25]\n```\nResultado: `0.072`")
 
         with tab2:
             st.markdown("### 🖼️ Imagens Comparadas")
